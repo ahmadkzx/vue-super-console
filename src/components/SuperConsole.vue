@@ -11,6 +11,25 @@
 			<SuperLog log="salam" logType="success" />
 			<SuperLog log="salam" logType="warning" />
 		</div>
+
+		<div class="super-console-footer">
+			<div class="super-console-footer-log info">
+				<img class="super-console-footer-log__icon" src="@/assets/icons/info.svg">
+				<span class="super-console-footer-log__count">25</span>
+			</div>
+			<div class="super-console-footer-log error">
+				<img class="super-console-footer-log__icon" src="@/assets/icons/error.svg">
+				<span class="super-console-footer-log__count">25</span>
+			</div>
+			<div class="super-console-footer-log success">
+				<img class="super-console-footer-log__icon" src="@/assets/icons/success.svg">
+				<span class="super-console-footer-log__count">25</span>
+			</div>
+			<div class="super-console-footer-log warning">
+				<img class="super-console-footer-log__icon" src="@/assets/icons/warning.svg">
+				<span class="super-console-footer-log__count">25</span>
+			</div>
+		</div>
 	</div>
 </template>
 
