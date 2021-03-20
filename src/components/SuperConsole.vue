@@ -6,7 +6,10 @@
 		</div>
 
 		<div class="super-console-logs">
+			<SuperLog log="salam" logType="error" />
 			<SuperLog log="salam" logType="info" />
+			<SuperLog log="salam" logType="success" />
+			<SuperLog log="salam" logType="warning" />
 		</div>
 	</div>
 </template>

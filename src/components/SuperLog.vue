@@ -1,5 +1,5 @@
 <template>
-	<div class="log">
+	<div :class="['log', logType]">
 		<div class="log-icon">
 			<img :src="require(`@/assets/icons/${logType}.svg`)">
 		</div>

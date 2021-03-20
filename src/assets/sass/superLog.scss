@@ -1,4 +1,7 @@
 $blue: #4889ff;
+$red: #ff0042;
+$green: #00ff6c;
+$yellow: #ffd200;
 $bg: #32374e;
 $color-info: #5c648b;
 $color-primary: #2c3042;
@@ -8,21 +11,27 @@ $color-primary-light: #454d70;
 	width: 100%;
 	padding: .7rem;
 	border-radius: 1rem;
-	border: 1px solid $blue;
+	border: 1px solid;
 	background: $bg;
 	display: flex;
 	justify-content: space-between;
 	align-items: flex-start;
+	margin-bottom: .5rem;
+	opacity: 0;
+	animation: fadeIn .3s forwards;
+
+	@keyframes fadeIn {
+		from { opacity: 0; }
+		to { opacity: 1; }
+	}
 
 	&-icon {
 		width: 1.2rem;
 		min-width: 1.2rem;
 		height: 1.2rem;
 		padding: .3rem;
-		background: $blue;
 		border-radius: .5rem;
 		overflow: hidden;
-		box-shadow: 0 0 10px rgba($blue, .5);
 
 		img {
 			width: 100%;
@@ -60,5 +69,42 @@ $color-primary-light: #454d70;
 		&-footer-info__data {
 			color: white;
 		}
+	}
+}
+
+
+.log.info {
+	border-color: $blue;
+
+	.log-icon {
+		background: $blue;
+		box-shadow: 0 0 10px rgba($blue, .5);
+	}
+}
+
+.log.error {
+	border-color: $red;
+
+	.log-icon {
+		background: $red;
+		box-shadow: 0 0 10px rgba($red, .5);
+	}
+}
+
+.log.success {
+	border-color: $green;
+
+	.log-icon {
+		background: $green;
+		box-shadow: 0 0 10px rgba($green, .5);
+	}
+}
+
+.log.warning {
+	border-color: $yellow;
+
+	.log-icon {
+		background: $yellow;
+		box-shadow: 0 0 10px rgba($yellow, .5);
 	}
 }
