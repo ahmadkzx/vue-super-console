@@ -1,0 +1,43 @@
+@import "@/assets/sass/_fonts.scss";
+
+$color-primary: #2c3042;
+$color-primary-light: #454d70;
+
+.super-console {
+	position: fixed;
+	top: 1rem;
+	right: 1rem;
+	width: 500px;
+	height: 400px;
+	border-radius: 1.5rem;
+	background: $color-primary;
+	overflow: hidden;
+	box-shadow: 0 5px 20px rgba(black, .1);
+
+	&-header {
+		position: relative;
+		width: 100%;
+		padding: .7rem;
+		background: $color-primary-light;
+		text-align: center;
+		color: $color-primary;
+
+		.super-console__title {
+			font-weight: bold;
+		}
+
+		.super-console__close {
+			position: absolute;
+			right: 1rem;
+			top: 50%;
+			transform: translateY(-50%);
+			width: 1rem;
+			height: 1rem;
+			background: url('../icons/arrow.svg') center no-repeat;
+			background-size: cover;
+			outline: none;
+			border: none;
+			cursor: pointer;
+		}
+	}
+}
