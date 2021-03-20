@@ -4,12 +4,22 @@
 			<span class="super-console__title">SUPER CONSOLE</span>
 			<button class="super-console__close"></button>
 		</div>
+
+		<div class="super-console-logs">
+			<SuperLog log="salam" logType="info" />
+		</div>
 	</div>
 </template>
 
 <script>
+import SuperLog from './SuperLog'
+
 export default {
-	name: 'SuperConsole'
+	name: 'SuperConsole',
+
+	components: {
+		SuperLog
+	}
 }
 </script>
 
