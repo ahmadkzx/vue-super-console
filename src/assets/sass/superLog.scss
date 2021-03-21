@@ -42,6 +42,7 @@ $color-primary-light: #454d70;
 	}
 
 	&-section {
+		width: 100%;
 		margin-left: 1rem;
 
 		&__content {
@@ -50,10 +51,27 @@ $color-primary-light: #454d70;
 		}
 
 		&-footer {
+			width: 100%;
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
 			margin-top: .3rem;
 			padding-top: .2rem;
-			display: inline-block;
-			border-top: 2px solid $color-primary-light;
+
+			&-infos {
+				display: inline-block;
+				border-top: 2px solid $color-primary-light;
+			}
+
+			&__removeBtn {
+				width: 1.5rem;
+				height: 1.5rem;
+				background: url('../icons/trash.svg') center no-repeat;
+				background-size: 70%;
+				border: none !important;
+				outline: none !important;
+				cursor: pointer;
+			}
 		}
 
 		&-footer-info {

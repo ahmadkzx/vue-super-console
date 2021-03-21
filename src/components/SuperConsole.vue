@@ -6,7 +6,15 @@
 		</div>
 
 		<div class="super-console-logs" v-if="logs.length">
-			<SuperLog v-for="(log, index) in logs" :key="index" :logTitle="log.title" :logContent="log.content" :logType="log.type" />
+			<SuperLog
+				v-for="(log, index) in logs"
+				:key="index"
+				:logId="log.id"
+				:logType="log.type"
+				:logTitle="log.title"
+				@removeLog="removeLog"
+				:logContent="log.content"
+			/>
 		</div>
 
 		<div class="super-console__empty" v-else>Console Is Empty</div>
@@ -81,7 +89,12 @@ export default {
 			} else {
 				payload.content = args[0]
 			}
+			payload.id = this.logs[this.logs.length - 1]?.id + 1 || 1
 			this.logs.push(payload)
+		},
+
+		removeLog(id) {
+			this.logs = this.logs.filter(log => log.id != id)
 		}
 	},
 }

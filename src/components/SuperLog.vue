@@ -8,15 +8,19 @@
 				{{ logContent }}
 			</div>
 			<div class="log-section-footer">
-				<div class="log-section-footer-info">
-					<span class="log-section-footer-info__key">Log Time:</span>
-					<span class="log-section-footer-info__data">23:15:20</span>
+				<div class="log-section-footer-infos">
+					<div class="log-section-footer-info">
+						<span class="log-section-footer-info__key">Log Time:</span>
+						<span class="log-section-footer-info__data">23:15:20</span>
+					</div>
+
+					<div class="log-section-footer-info">
+						<span class="log-section-footer-info__key">Type:</span>
+						<span class="log-section-footer-info__data">String</span>
+					</div>
 				</div>
 
-				<div class="log-section-footer-info">
-					<span class="log-section-footer-info__key">Type:</span>
-					<span class="log-section-footer-info__data">String</span>
-				</div>
+				<button class="log-section-footer__removeBtn" @click="removeLog"></button>
 			</div>
 		</div>
 	</div>
@@ -36,6 +40,16 @@ export default {
 		logType: {
 			type: String,
 			required: true
+		},
+		logId: {
+			type: Number,
+			required: true
+		}
+	},
+
+	methods: {
+		removeLog() {
+			this.$emit('removeLog', this.logId)
 		}
 	}
 }
