@@ -79,37 +79,52 @@ $color-primary-light: #454d70;
 			align-items: center;
 			margin-top: .3rem;
 			padding-top: .2rem;
-
-			&-infos {
-				display: inline-block;
-				border-top: 2px solid $color-primary-light;
-			}
-
-			&__removeBtn {
-				width: 1.5rem;
-				height: 1.5rem;
-				background: url('../icons/trash.svg') center no-repeat;
-				background-size: 70%;
-				border: none !important;
-				outline: none !important;
-				cursor: pointer;
-			}
 		}
 
-		&-footer-info {
+		&-footer-infos {
 			display: inline-block;
-			margin-right: 1rem;
-			font-size: .7rem;
+			border-top: 2px solid $color-primary-light;
+
+			&-item {
+				display: inline-block;
+				margin-right: 1rem;
+				font-size: .7rem;
+			}
+	
+			&-item__key {
+				margin-right: .3rem;
+				color: $color-info;
+				font-weight: 500;
+			}
+	
+			&-item__data {
+				color: white;
+			}
 		}
 
-		&-footer-info__key {
-			margin-right: .3rem;
-			color: $color-info;
-			font-weight: 500;
+		&-footer__btn {
+			width: 1.5rem;
+			height: 1.5rem;
+			margin-left: .5rem;
+			background-position: center;
+			background-repeat: no-repeat;
+			background-size: 70%;
+			background-color: transparent;
+			border: none !important;
+			outline: none !important;
+			cursor: pointer;
 		}
 
-		&-footer-info__data {
-			color: white;
+		&-footer__btn.delete {
+			background-image: url('../icons/trash.svg');
+		}
+
+		&-footer__btn.copy {
+			background-image: url('../icons/copy.svg');
+
+			&.copied {
+				background-image: url('../icons/success.svg');
+			}
 		}
 	}
 }

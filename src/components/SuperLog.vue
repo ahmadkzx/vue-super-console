@@ -9,18 +9,21 @@
 			</div>
 			<div class="log-section-footer">
 				<div class="log-section-footer-infos">
-					<div class="log-section-footer-info">
-						<span class="log-section-footer-info__key">Log Time:</span>
-						<span class="log-section-footer-info__data">23:15:20</span>
+					<div class="log-section-footer-infos-item">
+						<span class="log-section-footer-infos-item__key">Log Time:</span>
+						<span class="log-section-footer-infos-item__data">23:15:20</span>
 					</div>
 
-					<div class="log-section-footer-info">
-						<span class="log-section-footer-info__key">Type:</span>
-						<span class="log-section-footer-info__data">String</span>
+					<div class="log-section-footer-infos-item">
+						<span class="log-section-footer-infos-item__key">Type:</span>
+						<span class="log-section-footer-infos-item__data">String</span>
 					</div>
 				</div>
 
-				<button class="log-section-footer__removeBtn" @click="removeLog(logId)"></button>
+				<div>
+					<button class="log-section-footer__btn delete" @click="removeLog(logId)"></button>
+					<button :class="['log-section-footer__btn copy', { 'copied': isCopied }]" @click="copy"></button>
+				</div>
 			</div>
 		</div>
 	</div>
@@ -48,6 +51,7 @@ export default {
 	},
 
 	data: () => ({
+		isCopied: false,
 		isRemoving: false
 	}),
 
@@ -56,6 +60,19 @@ export default {
 			if (this.logId != logId) return
 			this.isRemoving = true
 			setTimeout(() => this.$emit('removeLog', this.logId), 300)
+		},
+
+		copy() {
+			if (this.isCopied) return
+			let inp = document.createElement('input')
+			inp.value = this.logContent
+			document.body.appendChild(inp)
+			inp.select()
+			document.execCommand('copy')
+			document.body.removeChild(inp)
+
+			this.isCopied = true
+			setTimeout(() => this.isCopied = false, 1000)
 		}
 	}
 }
