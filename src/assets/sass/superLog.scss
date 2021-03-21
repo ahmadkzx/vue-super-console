@@ -18,11 +18,33 @@ $color-primary-light: #454d70;
 	align-items: flex-start;
 	margin-bottom: .5rem;
 	opacity: 0;
-	animation: fadeIn .3s forwards;
+	transform: scale(.7);
+	animation: show .3s forwards;
 
-	@keyframes fadeIn {
-		from { opacity: 0; }
-		to { opacity: 1; }
+	@keyframes show {
+		from {
+			opacity: 0;
+			transform: scale(.7);
+		}
+		to {
+			opacity: 1;
+			transform: scale(1);
+		}
+	}
+
+	@keyframes remove {
+		from {
+			opacity: 1;
+			transform: scale(1);
+		}
+		to {
+			opacity: 0;
+			transform: scale(.7);
+		}
+	}
+
+	&.remove {
+		animation: remove .3s forwards;
 	}
 
 	&-icon {

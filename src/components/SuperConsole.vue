@@ -7,8 +7,8 @@
 
 		<div class="super-console-logs" v-if="logs.length">
 			<SuperLog
-				v-for="(log, index) in logs"
-				:key="index"
+				v-for="log in logs"
+				:key="log.id"
 				:logId="log.id"
 				:logType="log.type"
 				:logTitle="log.title"

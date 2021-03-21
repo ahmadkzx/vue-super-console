@@ -1,5 +1,5 @@
 <template>
-	<div :class="['log', logType]">
+	<div :class="['log', logType, { 'remove': isRemoving }]">
 		<div class="log-icon">
 			<img :src="require(`@/assets/icons/${logType}.svg`)">
 		</div>
@@ -20,7 +20,7 @@
 					</div>
 				</div>
 
-				<button class="log-section-footer__removeBtn" @click="removeLog"></button>
+				<button class="log-section-footer__removeBtn" @click="removeLog(logId)"></button>
 			</div>
 		</div>
 	</div>
@@ -47,9 +47,15 @@ export default {
 		}
 	},
 
+	data: () => ({
+		isRemoving: false
+	}),
+
 	methods: {
-		removeLog() {
-			this.$emit('removeLog', this.logId)
+		removeLog(logId) {
+			if (this.logId != logId) return
+			this.isRemoving = true
+			setTimeout(() => this.$emit('removeLog', this.logId), 300)
 		}
 	}
 }
