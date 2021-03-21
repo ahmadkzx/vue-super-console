@@ -5,7 +5,7 @@
 		</div>
 		<div class="log-section">
 			<div class="log-section__content">
-				page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy
+				{{ logContent }}
 			</div>
 			<div class="log-section-footer">
 				<div class="log-section-footer-info">
@@ -27,7 +27,10 @@ export default {
 	name: 'SuperLog',
 
 	props: {
-		log: {
+		logTitle: {
+			required: false
+		},
+		logContent: {
 			required: true
 		},
 		logType: {

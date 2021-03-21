@@ -6,10 +6,7 @@
 		</div>
 
 		<div class="super-console-logs">
-			<SuperLog log="salam" logType="error" />
-			<SuperLog log="salam" logType="info" />
-			<SuperLog log="salam" logType="success" />
-			<SuperLog log="salam" logType="warning" />
+			<SuperLog v-for="(log, index) in logs" :key="index" :logTitle="log.title" :logContent="log.content" :logType="log.type" />
 		</div>
 
 		<div class="super-console-footer">
@@ -41,6 +38,49 @@ export default {
 
 	components: {
 		SuperLog
+	},
+
+	data: () => ({
+		logs: []
+	}),
+
+	mounted() {
+		this.setConsoleListeners()
+	},
+
+	methods: {
+		setConsoleListeners() {
+			let cLog = console.log
+			let cWarn = console.warn
+			let cError = console.error
+			let res = this
+
+			console.log = function () {
+				res.addLog(/*type*/ 'info', /*arguments*/ arguments)
+				return cLog.apply(console, arguments);
+			};
+
+			console.warn = function () {
+				res.addLog(/*type*/ 'warning', /*arguments*/ arguments)
+				return cWarn.apply(console, arguments);
+			};
+
+			console.error = function () {
+				res.addLog(/*type*/ 'error', /*arguments*/ arguments)
+				return cError.apply(console, arguments);
+			};
+		},
+
+		addLog(type, args) {
+			let payload = { type }
+			if (args.length > 1) {
+				payload.title = args[0]
+				payload.content = args[1]
+			} else {
+				payload.content = args[0]
+			}
+			this.logs.push(payload)
+		}
 	}
 }
 </script>
