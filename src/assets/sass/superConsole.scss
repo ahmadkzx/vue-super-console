@@ -8,7 +8,7 @@ $color-primary: #2c3042;
 $color-primary-light: #454d70;
 
 .super-console {
-	position: absolute;
+	position: fixed;
 	top: 1rem;
 	right: -500px;
 	width: 500px;
@@ -107,5 +107,11 @@ $color-primary-light: #454d70;
 				color: white;
 			}
 		}
+	}
+
+	&__empty {
+		text-align: center;
+		padding: 1rem 0;
+		color: $color-primary;
 	}
 }

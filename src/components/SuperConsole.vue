@@ -5,28 +5,25 @@
 			<button class="super-console__close"></button>
 		</div>
 
-		<div class="super-console-logs">
+		<div class="super-console-logs" v-if="logs.length">
 			<SuperLog v-for="(log, index) in logs" :key="index" :logTitle="log.title" :logContent="log.content" :logType="log.type" />
 		</div>
 
+		<div class="super-console__empty" v-else>Console Is Empty</div>
+
 		<div class="super-console-footer">
-			<div class="super-console-footer-log info">
-				<img class="super-console-footer-log__icon" src="@/assets/icons/info.svg">
-				<span class="super-console-footer-log__count">25</span>
+
+			<div
+				:key="index"
+				:class="['super-console-footer-log', logType]"
+				v-for="(logType, index) in ['info', 'error', 'warning', 'success']"
+			>
+				<img class="super-console-footer-log__icon" :src="require(`@/assets/icons/${logType}.svg`)">
+				<span class="super-console-footer-log__count">{{ logsCount[logType] || 0 }}</span>
 			</div>
-			<div class="super-console-footer-log error">
-				<img class="super-console-footer-log__icon" src="@/assets/icons/error.svg">
-				<span class="super-console-footer-log__count">25</span>
-			</div>
-			<div class="super-console-footer-log success">
-				<img class="super-console-footer-log__icon" src="@/assets/icons/success.svg">
-				<span class="super-console-footer-log__count">25</span>
-			</div>
-			<div class="super-console-footer-log warning">
-				<img class="super-console-footer-log__icon" src="@/assets/icons/warning.svg">
-				<span class="super-console-footer-log__count">25</span>
-			</div>
+			
 		</div>
+
 	</div>
 </template>
 
@@ -43,6 +40,14 @@ export default {
 	data: () => ({
 		logs: []
 	}),
+
+	computed: {
+		logsCount() {
+			let logsCount = {}
+			this.logs.map(log => (logsCount[log.type]) ? logsCount[log.type]++ : logsCount[log.type] = 1)
+			return logsCount
+		}
+	},
 
 	mounted() {
 		this.setConsoleListeners()
@@ -78,7 +83,7 @@ export default {
 			}
 			this.logs.push(payload)
 		}
-	}
+	},
 }
 </script>
 
