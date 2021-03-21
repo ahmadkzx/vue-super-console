@@ -62,11 +62,10 @@ export default {
 		},
 
 		proxy(method, type) {
-			let res = this
 			return function () {
-				res.addLog(type, arguments)
+				this.addLog(type, arguments)
 				return method.apply(console, arguments)
-			}
+			}.bind(this)
 		},
 
 		addLog(type, args) {
