@@ -53,22 +53,20 @@ export default {
 			let cLog = console.log
 			let cWarn = console.warn
 			let cError = console.error
+			
+			console.log = this.proxy(cLog, 'info')
+			console.warn = this.proxy(cWarn, 'warning')
+			console.error = this.proxy(cError, 'error')
+			console.success = this.proxy(cLog, 'success')
+
+		},
+
+		proxy(method, type) {
 			let res = this
-
-			console.log = function () {
-				res.addLog(/*type*/ 'info', /*arguments*/ arguments)
-				return cLog.apply(console, arguments);
-			};
-
-			console.warn = function () {
-				res.addLog(/*type*/ 'warning', /*arguments*/ arguments)
-				return cWarn.apply(console, arguments);
-			};
-
-			console.error = function () {
-				res.addLog(/*type*/ 'error', /*arguments*/ arguments)
-				return cError.apply(console, arguments);
-			};
+			return function () {
+				res.addLog(type, arguments)
+				return method.apply(console, arguments)
+			}
 		},
 
 		addLog(type, args) {
