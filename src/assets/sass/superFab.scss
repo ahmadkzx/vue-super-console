@@ -1,0 +1,12 @@
+.super-fab {
+	position: fixed;
+	top: 3rem;
+	right: 500px;
+	width: 2rem;
+	height: 4rem;
+	background: blue;
+
+	.opened {
+		right: 500px;
+	}
+}

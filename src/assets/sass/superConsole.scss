@@ -8,15 +8,20 @@ $color-primary: #2c3042;
 $color-primary-light: #454d70;
 
 .super-console {
-	position: fixed;
+	position: absolute;
 	top: 1rem;
-	right: 1rem;
+	right: -500px;
 	width: 500px;
 	border-radius: 1.5rem;
 	background: rgba($color-primary, .9);
 	backdrop-filter: blur(2px);
 	overflow: hidden;
+	transition: all .2s linear;
 	box-shadow: 0 5px 20px rgba(black, .1);
+
+	&.opened {
+		right: 0;
+	}
 
 	&-header {
 		position: relative;
