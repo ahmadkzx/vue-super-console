@@ -1,17 +1,17 @@
 <template>
   <div id="app">
 		<img src="@/assets/test.jpg" style="position: absolute">
-    <SuperConsole />
+    <SuperFab />
   </div>
 </template>
 
 <script>
-import SuperConsole from './components/SuperConsole'
+import SuperFab from './components/SuperFab'
 
 export default {
   name: 'App',
   components: {
-    SuperConsole
+    SuperFab
   }
 }
 </script>
