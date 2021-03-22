@@ -82,14 +82,11 @@ export default {
 		},
 
 		addLog(type, args) {
-			let payload = { type }
-			if (args.length > 1) {
-				payload.title = args[0]
-				payload.content = args[1]
-			} else {
-				payload.content = args[0]
+			let payload = {
+				type,
+				content: Array.prototype.join.call(args, ' '),
+				id: this.logs[this.logs.length - 1]?.id + 1 || 1
 			}
-			payload.id = this.logs[this.logs.length - 1]?.id + 1 || 1
 			this.logs.push(payload)
 		},
 
