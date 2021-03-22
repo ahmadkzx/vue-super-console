@@ -90,6 +90,14 @@ export default {
 				id: this.logs[this.logs.length - 1]?.id + 1 || 1
 			}
 			this.logs.push(payload)
+			this.scrollToBottom()
+		},
+
+		scrollToBottom() {
+			setTimeout(() => {
+				document.getElementsByClassName('super-console-logs')[0].scrollTop
+				= document.getElementsByClassName('super-console-logs')[0].scrollHeight
+			}, 0)
 		},
 
 		removeLog(id) {
