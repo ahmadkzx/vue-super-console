@@ -19,6 +19,9 @@
 				</div>
 
 				<div>
+					<button class="log-section-footer__btn delete" @click="googleError" v-if="logType == 'error'">
+						<i class="si si-google"></i>
+					</button>
 					<button class="log-section-footer__btn delete" @click="removeLog(logId)">
 						<i class="si si-trash"></i>
 					</button>
@@ -76,6 +79,11 @@ export default {
 
 			this.isCopied = true
 			setTimeout(() => this.isCopied = false, 1000)
+		},
+
+		googleError() {
+			const searchQuery = `how to fix ${this.logContent}`.replaceAll(' ', '+')
+			if (process.browser) window.open(`https://google.com/search?q=${searchQuery}`, '_blank')
 		}
 	}
 }

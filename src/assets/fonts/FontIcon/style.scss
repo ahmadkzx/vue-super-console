@@ -2,11 +2,11 @@
 
 @font-face {
   font-family: '#{$icomoon-font-family}';
-  src:  url('../fonts/FontIcon/#{$icomoon-font-path}/#{$icomoon-font-family}.eot?rq4wcd');
-  src:  url('../fonts/FontIcon/#{$icomoon-font-path}/#{$icomoon-font-family}.eot?rq4wcd#iefix') format('embedded-opentype'),
-    url('../fonts/FontIcon/#{$icomoon-font-path}/#{$icomoon-font-family}.ttf?rq4wcd') format('truetype'),
-    url('../fonts/FontIcon/#{$icomoon-font-path}/#{$icomoon-font-family}.woff?rq4wcd') format('woff'),
-    url('../fonts/FontIcon/#{$icomoon-font-path}/#{$icomoon-font-family}.svg?rq4wcd##{$icomoon-font-family}') format('svg');
+  src:  url('#{$icomoon-font-path}/#{$icomoon-font-family}.eot?rixxli');
+  src:  url('#{$icomoon-font-path}/#{$icomoon-font-family}.eot?rixxli#iefix') format('embedded-opentype'),
+    url('#{$icomoon-font-path}/#{$icomoon-font-family}.ttf?rixxli') format('truetype'),
+    url('#{$icomoon-font-path}/#{$icomoon-font-family}.woff?rixxli') format('woff'),
+    url('#{$icomoon-font-path}/#{$icomoon-font-family}.svg?rixxli##{$icomoon-font-family}') format('svg');
   font-weight: normal;
   font-style: normal;
   font-display: block;
@@ -27,6 +27,11 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+.si-google {
+  &:before {
+    content: $si-google; 
+  }
+}
 .si-arrow {
   &:before {
     content: $si-arrow; 
