@@ -4,6 +4,7 @@ $blue: #4889ff;
 $red: #ff0042;
 $green: #00ff6c;
 $yellow: #ffd200;
+$color-info: #5c648b;
 $color-primary: #2c3042;
 $color-primary-light: #454d70;
 
@@ -50,8 +51,28 @@ $color-primary-light: #454d70;
 		}
 	}
 
+	.pad {
+		padding: .5rem 0;
+	}
+	
 	&-logs {
-		padding: .5rem;
+		padding: 0 .5rem;
+		max-height: 500px;
+		overflow-y: scroll;
+		scrollbar-width: thin !important;
+		scroll-behavior: smooth;
+
+		&::-webkit-scrollbar {
+			width: .4rem;
+		}
+
+		&::-webkit-scrollbar-track {
+			background: $color-primary;
+		}
+
+		&::-webkit-scrollbar-thumb {
+			background: $color-info;
+		}
 	}
 
 	&-footer {

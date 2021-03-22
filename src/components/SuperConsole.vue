@@ -5,16 +5,18 @@
 			<button class="super-console__close"></button>
 		</div>
 
-		<div class="super-console-logs" v-if="logs.length">
-			<SuperLog
-				v-for="log in logs"
-				:key="log.id"
-				:logId="log.id"
-				:logType="log.type"
-				:logTitle="log.title"
-				@removeLog="removeLog"
-				:logContent="log.content"
-			/>
+		<div class="pad" v-if="logs.length">
+			<div class="super-console-logs">
+				<SuperLog
+					v-for="log in logs"
+					:key="log.id"
+					:logId="log.id"
+					:logType="log.type"
+					:logTitle="log.title"
+					@removeLog="removeLog"
+					:logContent="log.content"
+				/>
+			</div>
 		</div>
 
 		<div class="super-console__empty" v-else>Console Is Empty</div>
