@@ -88,7 +88,7 @@ export default {
 		addLog(type, args) {
 			let payload = {
 				type,
-				content: Array.prototype.join.call(args, ' '),
+				content: this.getLogContent(args),
 				id: this.logs[this.logs.length - 1]?.id + 1 || 1
 			}
 			this.logs.push(payload)
@@ -104,7 +104,29 @@ export default {
 
 		removeLog(id) {
 			this.logs = this.logs.filter(log => log.id != id)
-		}
+		},
+
+		getLogContent(args) {
+			let newArgs = []
+			let isStyled = false
+			Array.prototype.map.call(args, arg => {
+				if (isStyled && this.isCss(arg)) return
+				if (arg.indexOf('%c') >= 0) {
+					isStyled = true;
+					arg = arg.replaceAll('%c', '')
+				}
+				newArgs.push(arg)
+			})
+			return newArgs.join(' ')
+		},
+
+		isCss(str) {
+			let doc = document.implementation.createHTMLDocument('')
+			let styleEl = document.createElement('style')
+			doc.body.appendChild(styleEl);
+			styleEl.textContent = `* {${ str }}`
+			return !!styleEl.sheet.cssRules[0].styleMap.size;
+		},
 	},
 }
 </script>
