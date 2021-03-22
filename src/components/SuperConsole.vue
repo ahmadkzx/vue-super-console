@@ -2,7 +2,9 @@
 	<div class="super-console">
 		<div class="super-console-header">
 			<span class="super-console__title">SUPER CONSOLE</span>
-			<button class="super-console__close"></button>
+			<button class="super-console__close">
+				<i class="si si-arrow"></i>
+			</button>
 		</div>
 
 		<div class="pad" v-if="logs.length">
@@ -28,7 +30,7 @@
 				:class="['super-console-footer-log', logType]"
 				v-for="(logType, index) in ['info', 'error', 'warning', 'success']"
 			>
-				<img class="super-console-footer-log__icon" :src="require(`@/assets/icons/${logType}.svg`)">
+				<i :class="`si si-${logType} super-console-footer-log__icon`"></i>
 				<span class="super-console-footer-log__count">{{ logsCount[logType] || 0 }}</span>
 			</div>
 			

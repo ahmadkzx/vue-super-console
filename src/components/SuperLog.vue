@@ -1,7 +1,7 @@
 <template>
 	<div :class="['log', logType, { 'remove': isRemoving }]">
 		<div class="log-icon">
-			<img :src="require(`@/assets/icons/${logType}.svg`)">
+			<i :class="`si si-${logType}`"></i>
 		</div>
 		<div class="log-section">
 			<div class="log-section__content">
@@ -21,8 +21,13 @@
 				</div>
 
 				<div>
-					<button class="log-section-footer__btn delete" @click="removeLog(logId)"></button>
-					<button :class="['log-section-footer__btn copy', { 'copied': isCopied }]" @click="copy"></button>
+					<button class="log-section-footer__btn delete" @click="removeLog(logId)">
+						<i class="si si-trash"></i>
+					</button>
+					<button :class="['log-section-footer__btn copy', { 'copied': isCopied }]" @click="copy">
+						<i class="si si-copy" v-if="!isCopied"></i>
+						<i class="si si-success" v-else></i>
+					</button>
 				</div>
 			</div>
 		</div>

@@ -1,12 +1,4 @@
-@import "@/assets/sass/_fonts.scss";
-
-$blue: #4889ff;
-$red: #ff0042;
-$green: #00ff6c;
-$yellow: #ffd200;
-$color-info: #5c648b;
-$color-primary: #2c3042;
-$color-primary-light: #454d70;
+@import "@/assets/sass/_base.scss";
 
 .super-console {
 	position: fixed;
@@ -37,17 +29,23 @@ $color-primary-light: #454d70;
 		}
 
 		.super-console__close {
+			display: flex;
+			justify-content: center;
+			align-items: center;
 			position: absolute;
+			padding: .5rem;
 			right: 1rem;
-			top: 50%;
-			transform: translateY(-50%);
-			width: 1rem;
-			height: 1rem;
-			background: url('../icons/arrow.svg') center no-repeat;
-			background-size: cover;
+			top: 0.4rem;
+			background: none;
+			transform: rotate(-90deg);
 			outline: none;
 			border: none;
 			cursor: pointer;
+
+			i {
+				font-size: 1.2rem;
+				color: $color-primary !important;
+			}
 		}
 	}
 
@@ -92,40 +90,37 @@ $color-primary-light: #454d70;
 			&.info {
 				background: $blue;
 				box-shadow: 0 0 10px rgba($blue, .6);
+				color: white;
 			}
 
 			&.error {
 				background: $red;
 				box-shadow: 0 0 10px rgba($red, .6);
+				color: white;
 			}
 
 			&.warning {
 				background: $yellow;
 				box-shadow: 0 0 10px rgba($yellow, .6);
-
-				* {
-					color: black;
-				}
+				color: black;
 			}
 
 			&.success {
 				background: $green;
 				box-shadow: 0 0 10px rgba($green, .6);
-
-				* {
-					color: black;
-				}
+				color: black;
 			}
 
 			&__icon {
 				width: .9rem;
 				margin-right: .3rem;
+				color: inherit !important;
 			}
 
 			&__count {
 				margin-top: .2rem;
 				font-size: .8rem;
-				color: white;
+				color: inherit !important;
 			}
 		}
 	}

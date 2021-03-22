@@ -1,11 +1,5 @@
-$blue: #4889ff;
-$red: #ff0042;
-$green: #00ff6c;
-$yellow: #ffd200;
+@import "@/assets/sass/_base.scss";
 $bg: #32374e;
-$color-info: #5c648b;
-$color-primary: #2c3042;
-$color-primary-light: #454d70;
 
 .log {
 	width: 100%;
@@ -48,19 +42,13 @@ $color-primary-light: #454d70;
 	}
 
 	&-icon {
-		width: 1.3rem;
-		min-width: 1.3rem;
-		height: 1.3rem;
+		padding: .2rem;
 		border-radius: .4rem;
 		overflow: hidden;
 		display: flex;
 		justify-content: center;
 		align-items: center;
-
-		img {
-			width: 60%;
-			height: 60%;
-		}
+		font-size: 1.1rem;
 	}
 
 	&-section {
@@ -103,28 +91,14 @@ $color-primary-light: #454d70;
 		}
 
 		&-footer__btn {
-			width: 1.5rem;
-			height: 1.5rem;
+			padding: .1rem .4rem;
+			background: none;
 			margin-left: .5rem;
-			background-position: center;
-			background-repeat: no-repeat;
-			background-size: 70%;
-			background-color: transparent;
 			border: none !important;
 			outline: none !important;
 			cursor: pointer;
-		}
-
-		&-footer__btn.delete {
-			background-image: url('../icons/trash.svg');
-		}
-
-		&-footer__btn.copy {
-			background-image: url('../icons/copy.svg');
-
-			&.copied {
-				background-image: url('../icons/success.svg');
-			}
+			font-size: 1.2rem;
+			color: $color-info;
 		}
 	}
 }
@@ -135,6 +109,7 @@ $color-primary-light: #454d70;
 
 	.log-icon {
 		background: $blue;
+		color: white;
 		box-shadow: 0 0 10px rgba($blue, .5);
 	}
 }
@@ -144,6 +119,7 @@ $color-primary-light: #454d70;
 
 	.log-icon {
 		background: $red;
+		color: white;
 		box-shadow: 0 0 10px rgba($red, .5);
 	}
 }
@@ -153,6 +129,7 @@ $color-primary-light: #454d70;
 
 	.log-icon {
 		background: $green;
+		color: black;
 		box-shadow: 0 0 10px rgba($green, .5);
 	}
 }
@@ -162,6 +139,7 @@ $color-primary-light: #454d70;
 
 	.log-icon {
 		background: $yellow;
+		color: black;
 		box-shadow: 0 0 10px rgba($yellow, .5);
 	}
 }
