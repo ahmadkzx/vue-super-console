@@ -9,12 +9,12 @@
 				<div class="log-section-footer-infos">
 					<div class="log-section-footer-infos-item">
 						<span class="log-section-footer-infos-item__key">Log Time:</span>
-						<span class="log-section-footer-infos-item__data">23:15:20</span>
+						<span class="log-section-footer-infos-item__data">{{ logTime }}</span>
 					</div>
 
 					<div class="log-section-footer-infos-item">
 						<span class="log-section-footer-infos-item__key">Type:</span>
-						<span class="log-section-footer-infos-item__data">String</span>
+						<span class="log-section-footer-infos-item__data">{{ logContentType }}</span>
 					</div>
 				</div>
 
@@ -40,9 +40,6 @@ export default {
 	name: 'SuperLog',
 
 	props: {
-		logTitle: {
-			required: false
-		},
 		logContent: {
 			required: true
 		},
@@ -53,6 +50,10 @@ export default {
 		logId: {
 			type: Number,
 			required: true
+		},
+		logContentType: {
+			type: String,
+			required: true
 		}
 	},
 
@@ -60,6 +61,12 @@ export default {
 		isCopied: false,
 		isRemoving: false
 	}),
+
+	computed: {
+		logTime() {
+			return new Date().toLocaleTimeString()
+		}
+	},
 
 	methods: {
 		removeLog(logId) {

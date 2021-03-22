@@ -14,9 +14,9 @@
 					:key="log.id"
 					:logId="log.id"
 					:logType="log.type"
-					:logTitle="log.title"
 					@removeLog="removeLog"
 					:logContent="log.content"
+					:logContentType="log.contentType"
 				/>
 			</div>
 		</div>
@@ -79,9 +79,11 @@ export default {
 		},
 
 		addLog(type, args) {
-			let payload = {
+			const { logContent, logContentType } = this.getLogContentAndContentType(args)
+			const payload = {
 				type,
-				content: this.getLogContent(args),
+				content: logContent,
+				contentType: logContentType,
 				id: this.logs[this.logs.length - 1]?.id + 1 || 1
 			}
 			this.logs.push(payload)
@@ -106,18 +108,26 @@ export default {
 			}.bind(this)
 		},
 
-		getLogContent(args) {
+		getLogContentAndContentType(args) {
 			let newArgs = []
 			let isStyled = false
+			let logContentType = ''
 			Array.prototype.map.call(args, arg => {
 
+				// DETECT LOG CONTENT TYPE
+				logContentType = (!!logContentType && typeof arg != logContentType) ? 'multi type' : typeof arg
+
+				
+				// BEAUTIFY OBJECT
 				if (typeof arg == 'object') {
 					arg = `<pre>${JSON.stringify(arg, null, 2)}</pre>`
 				}
 
+				// REMOVE CSS
 				if (isStyled && this.isCss(arg)) return
 
-				if (arg.indexOf('%c') >= 0) {
+				// REMOVE %c (this is using for styling log)
+				if (typeof arg == 'string' && arg.indexOf('%c') >= 0) {
 					isStyled = true;
 					arg = arg.replaceAll('%c', '')
 				}
@@ -125,7 +135,10 @@ export default {
 				newArgs.push( this.highlightSyntax(arg) )
 
 			})
-			return newArgs.join(' ')
+			return {
+				logContentType,
+				logContent: newArgs.join(' ')
+			}
 		},
 
 		isCss(str) {
@@ -137,9 +150,12 @@ export default {
 		},
 
 		highlightSyntax(txt) {
+			if (txt === true) return '<span style="color: #00ff6c">true</span>'
+			if (txt === false) return '<span style="color: #ff0042">false</span>'
+			if (typeof txt != 'string') return txt
 			txt = txt.replaceAll(':', '<span style="color: aqua">:</span>')
 			txt = txt.replaceAll('true', '<span style="color: #00ff6c">true</span>')
-			txt = txt.replaceAll('false', '<span style="color: #ff0042">true</span>')
+			txt = txt.replaceAll('false', '<span style="color: #ff0042">false</span>')
 			txt = txt.replaceAll('{', '<span style="color: aqua">{</span>')
 			txt = txt.replaceAll('}', '<span style="color: aqua">}</span>')
 			txt = txt.replaceAll('<pre', '<pre style="font-size: 1rem; margin: 0 !important;"')
