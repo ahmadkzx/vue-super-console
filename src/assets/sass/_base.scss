@@ -8,3 +8,11 @@ $color-primary-light: #454d70;
 
 @import "@/assets/sass/_fonts.scss";
 @import "@/assets/fonts/FontIcon/style.scss";
+
+
+* {
+	font-family: Vazir;
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
+}

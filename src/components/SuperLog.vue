@@ -4,9 +4,7 @@
 			<i :class="`si si-${logType}`"></i>
 		</div>
 		<div class="log-section">
-			<div class="log-section__content">
-				{{ logContent }}
-			</div>
+			<div class="log-section__content" v-html="logContent"></div>
 			<div class="log-section-footer">
 				<div class="log-section-footer-infos">
 					<div class="log-section-footer-infos-item">

@@ -78,13 +78,6 @@ export default {
 
 		},
 
-		proxy(method, type) {
-			return function () {
-				this.addLog(type, arguments)
-				return method.apply(console, arguments)
-			}.bind(this)
-		},
-
 		addLog(type, args) {
 			let payload = {
 				type,
@@ -95,6 +88,10 @@ export default {
 			this.scrollToBottom()
 		},
 
+		removeLog(id) {
+			this.logs = this.logs.filter(log => log.id != id)
+		},
+
 		scrollToBottom() {
 			setTimeout(() => {
 				document.getElementsByClassName('super-console-logs')[0].scrollTop
@@ -102,20 +99,31 @@ export default {
 			}, 0)
 		},
 
-		removeLog(id) {
-			this.logs = this.logs.filter(log => log.id != id)
+		proxy(method, type) {
+			return function () {
+				this.addLog(type, arguments)
+				return method.apply(console, arguments)
+			}.bind(this)
 		},
 
 		getLogContent(args) {
 			let newArgs = []
 			let isStyled = false
 			Array.prototype.map.call(args, arg => {
+
+				if (typeof arg == 'object') {
+					arg = `<pre>${JSON.stringify(arg, null, 2)}</pre>`
+				}
+
 				if (isStyled && this.isCss(arg)) return
+
 				if (arg.indexOf('%c') >= 0) {
 					isStyled = true;
 					arg = arg.replaceAll('%c', '')
 				}
-				newArgs.push(arg)
+
+				newArgs.push( this.highlightSyntax(arg) )
+
 			})
 			return newArgs.join(' ')
 		},
@@ -127,6 +135,16 @@ export default {
 			styleEl.textContent = `* {${ str }}`
 			return !!styleEl.sheet.cssRules[0].styleMap.size;
 		},
+
+		highlightSyntax(txt) {
+			txt = txt.replaceAll(':', '<span style="color: aqua">:</span>')
+			txt = txt.replaceAll('true', '<span style="color: #00ff6c">true</span>')
+			txt = txt.replaceAll('false', '<span style="color: #ff0042">true</span>')
+			txt = txt.replaceAll('{', '<span style="color: aqua">{</span>')
+			txt = txt.replaceAll('}', '<span style="color: aqua">}</span>')
+			txt = txt.replaceAll('<pre', '<pre style="font-size: 1rem; margin: 0 !important;"')
+			return txt
+		}
 	},
 }
 </script>
