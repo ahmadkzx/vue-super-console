@@ -6,3 +6,6 @@ Vue.config.productionTip = false
 new Vue({
   render: h => h(App),
 }).$mount('#app')
+
+// import SuperFab from './components/SuperFab'
+// export default SuperFab
