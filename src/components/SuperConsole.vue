@@ -10,7 +10,7 @@
 		<div class="super-console-search">
 			<input type="text" class="super-console-search__input" v-model="searchQuery" placeholder="Search Text...">
 			<button class="super-console-search__btn" @click="clearLogs">
-				<i class="si si-trash"></i>
+				<i class="si si-search"></i>
 			</button>
 		</div>
 

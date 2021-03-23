@@ -1,10 +1,10 @@
 @font-face {
   font-family: 'FontIcon';
-  src:  url('fonts/FontIcon.eot?rixxli');
-  src:  url('fonts/FontIcon.eot?rixxli#iefix') format('embedded-opentype'),
-    url('fonts/FontIcon.ttf?rixxli') format('truetype'),
-    url('fonts/FontIcon.woff?rixxli') format('woff'),
-    url('fonts/FontIcon.svg?rixxli#FontIcon') format('svg');
+  src:  url('fonts/FontIcon.eot?6tce5r');
+  src:  url('fonts/FontIcon.eot?6tce5r#iefix') format('embedded-opentype'),
+    url('fonts/FontIcon.ttf?6tce5r') format('truetype'),
+    url('fonts/FontIcon.woff?6tce5r') format('woff'),
+    url('fonts/FontIcon.svg?6tce5r#FontIcon') format('svg');
   font-weight: normal;
   font-style: normal;
   font-display: block;
@@ -25,6 +25,9 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+.si-search:before {
+  content: "\e908";
+}
 .si-google:before {
   content: "\e907";
 }
