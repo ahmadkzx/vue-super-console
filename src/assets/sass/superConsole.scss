@@ -28,7 +28,7 @@
 			font-weight: bold;
 		}
 
-		.super-console__close {
+		.super-console__clear {
 			display: flex;
 			justify-content: center;
 			align-items: center;
@@ -37,7 +37,6 @@
 			right: 1rem;
 			top: 0.4rem;
 			background: none;
-			transform: rotate(-90deg);
 			outline: none;
 			border: none;
 			cursor: pointer;

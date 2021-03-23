@@ -2,8 +2,8 @@
 	<div class="super-console">
 		<div class="super-console-header">
 			<span class="super-console__title">SUPER CONSOLE</span>
-			<button class="super-console__close">
-				<i class="si si-arrow"></i>
+			<button class="super-console__clear" @click="clearLogs">
+				<i class="si si-trash"></i>
 			</button>
 		</div>
 
@@ -92,6 +92,10 @@ export default {
 
 		removeLog(id) {
 			this.logs = this.logs.filter(log => log.id != id)
+		},
+
+		clearLogs() {
+			this.logs = []
 		},
 
 		scrollToBottom() {
