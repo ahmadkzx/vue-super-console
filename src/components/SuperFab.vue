@@ -1,7 +1,7 @@
 <template>
 	<div class="super-console-container">
 		<button :class="['super-fab', { 'opened': isConsoleOpened }]" @click="toggleIsConsoleOpened">
-
+			<i class="si si-arrow"></i>
 		</button>
 		<SuperConsole :class="{ 'opened': isConsoleOpened }" />
 	</div>
