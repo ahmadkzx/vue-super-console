@@ -7,10 +7,10 @@
 			</button>
 		</div>
 
-		<div class="pad" v-if="logs.length">
+		<div class="pad" v-if="filteredLogs.length">
 			<div class="super-console-logs">
 				<SuperLog
-					v-for="log in logs"
+					v-for="log in filteredLogs"
 					:key="log.id"
 					:logId="log.id"
 					:logType="log.type"
@@ -27,8 +27,9 @@
 
 			<div
 				:key="index"
-				:class="['super-console-footer-log', logType]"
+				@click="filterLogsByType(logType)"
 				v-for="(logType, index) in ['info', 'error', 'warning', 'success']"
+				:class="['super-console-footer-log', logType, { 'off': selectedErrorType && selectedErrorType != logType }]"
 			>
 				<i :class="`si si-${logType} super-console-footer-log__icon`"></i>
 				<span class="super-console-footer-log__count">{{ logsCount[logType] || 0 }}</span>
@@ -50,14 +51,23 @@ export default {
 	},
 
 	data: () => ({
-		logs: []
+		logsPayload: [],
+		selectedErrorType: ''
 	}),
 
 	computed: {
 		logsCount() {
 			let logsCount = {}
-			this.logs.map(log => (logsCount[log.type]) ? logsCount[log.type]++ : logsCount[log.type] = 1)
+			this.logsPayload.map(log => (logsCount[log.type]) ? logsCount[log.type]++ : logsCount[log.type] = 1)
 			return logsCount
+		},
+
+		filteredLogs() {
+			if (this.selectedErrorType) {
+				return this.logsPayload.filter(log => log.type == this.selectedErrorType)
+			} else {
+				return this.logsPayload
+			}
 		}
 	},
 
@@ -84,18 +94,18 @@ export default {
 				type,
 				content: logContent,
 				contentType: logContentType,
-				id: this.logs[this.logs.length - 1]?.id + 1 || 1
+				id: this.logsPayload[this.logsPayload.length - 1]?.id + 1 || 1
 			}
-			this.logs.push(payload)
+			this.logsPayload.push(payload)
 			this.scrollToBottom()
 		},
 
 		removeLog(id) {
-			this.logs = this.logs.filter(log => log.id != id)
+			this.logsPayload = this.logsPayload.filter(log => log.id != id)
 		},
 
 		clearLogs() {
-			this.logs = []
+			this.logsPayload = []
 		},
 
 		scrollToBottom() {
@@ -103,6 +113,10 @@ export default {
 				document.getElementsByClassName('super-console-logs')[0].scrollTop
 				= document.getElementsByClassName('super-console-logs')[0].scrollHeight
 			}, 0)
+		},
+
+		filterLogsByType(type) {
+			this.selectedErrorType = (this.selectedErrorType == type) ? '' : type
 		},
 
 		proxy(method, type) {
