@@ -25,6 +25,9 @@
 					<button class="log-section-footer__btn delete" @click="removeLog(logId)">
 						<i class="si si-trash"></i>
 					</button>
+					<button class="log-section-footer__btn delete" @click="takeScreenshot">
+						<i class="si si-screenshot"></i>
+					</button>
 					<button :class="['log-section-footer__btn copy', { 'copied': isCopied }]" @click="copy">
 						<i class="si si-copy" v-if="!isCopied"></i>
 						<i class="si si-success" v-else></i>
@@ -36,6 +39,8 @@
 </template>
 
 <script>
+import domtoimage from 'dom-to-image'
+
 export default {
 	name: 'SuperLog',
 
@@ -91,6 +96,16 @@ export default {
 		googleError() {
 			const searchQuery = `how to fix ${this.logContent}`.replaceAll(' ', '+')
 			if (process.browser) window.open(`https://google.com/search?q=${searchQuery}`, '_blank')
+		},
+
+		takeScreenshot() {
+			domtoimage.toJpeg(this.$el)
+				.then(dataUrl => {
+					let link = document.createElement('a')
+					link.download = 'log.jpg'
+					link.href = dataUrl
+					link.click()
+				})
 		}
 	}
 }
