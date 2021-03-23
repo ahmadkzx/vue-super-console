@@ -7,6 +7,13 @@
 			</button>
 		</div>
 
+		<div class="super-console-search">
+			<input type="text" class="super-console-search__input" v-model="searchQuery" placeholder="Search Text...">
+			<button class="super-console-search__btn" @click="clearLogs">
+				<i class="si si-trash"></i>
+			</button>
+		</div>
+
 		<div class="pad" v-if="filteredLogs.length">
 			<div class="super-console-logs">
 				<SuperLog
@@ -52,6 +59,7 @@ export default {
 
 	data: () => ({
 		logsPayload: [],
+		searchQuery: '',
 		selectedErrorType: ''
 	}),
 
@@ -63,11 +71,12 @@ export default {
 		},
 
 		filteredLogs() {
-			if (this.selectedErrorType) {
-				return this.logsPayload.filter(log => log.type == this.selectedErrorType)
-			} else {
-				return this.logsPayload
-			}
+			let filteredLogs = this.logsPayload
+
+			if (this.selectedErrorType) filteredLogs = filteredLogs.filter(log => log.type == this.selectedErrorType)
+			if (this.searchQuery) filteredLogs = filteredLogs.filter(log => log.content.indexOf(this.searchQuery) >= 0)
+
+			return filteredLogs
 		}
 	},
 
