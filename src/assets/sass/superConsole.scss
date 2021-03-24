@@ -24,17 +24,16 @@
 		text-align: center;
 		color: $color-primary;
 
-		.super-console__title {
+		&__title {
 			font-weight: bold;
 		}
 
-		.super-console__clear {
+		&__clear, &__screenshot {
 			display: flex;
 			justify-content: center;
 			align-items: center;
 			position: absolute;
 			padding: .5rem;
-			right: 1rem;
 			top: 0.4rem;
 			background: none;
 			outline: none;
@@ -45,6 +44,14 @@
 				font-size: 1.2rem;
 				color: $color-primary !important;
 			}
+		}
+
+		&__clear {
+			right: 1rem;
+		}
+
+		&__screenshot {
+			right: 3.5rem;
 		}
 	}
 

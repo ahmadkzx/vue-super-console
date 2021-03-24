@@ -1,9 +1,12 @@
 <template>
 	<div class="super-console">
 		<div class="super-console-header">
-			<span class="super-console__title">SUPER CONSOLE</span>
-			<button class="super-console__clear" @click="clearLogs">
+			<span class="super-console-header__title">SUPER CONSOLE</span>
+			<button class="super-console-header__clear" @click="clearLogs">
 				<i class="si si-trash"></i>
+			</button>
+			<button class="super-console-header__screenshot" @click="takeScreenshotOfConsole">
+				<i class="si si-screenshot"></i>
 			</button>
 		</div>
 
@@ -14,21 +17,23 @@
 			</button>
 		</div>
 
-		<div class="pad" v-if="filteredLogs.length">
-			<div class="super-console-logs">
-				<SuperLog
-					v-for="log in filteredLogs"
-					:key="log.id"
-					:logId="log.id"
-					:logType="log.type"
-					@removeLog="removeLog"
-					:logContent="log.content"
-					:logContentType="log.contentType"
-				/>
+		<div id="super-console-body">
+			<div class="pad" v-if="filteredLogs.length">
+				<div class="super-console-logs">
+					<SuperLog
+						v-for="log in filteredLogs"
+						:key="log.id"
+						:logId="log.id"
+						:logType="log.type"
+						@removeLog="removeLog"
+						:logContent="log.content"
+						:logContentType="log.contentType"
+					/>
+				</div>
 			</div>
-		</div>
 
-		<div class="super-console__empty" v-else>Console Is Empty</div>
+			<div class="super-console__empty" v-else>Console Is Empty</div>
+		</div>
 
 		<div class="super-console-footer">
 
@@ -49,6 +54,7 @@
 
 <script>
 import SuperLog from './SuperLog'
+import domtoimage from 'dom-to-image'
 
 export default {
 	name: 'SuperConsole',
@@ -187,6 +193,16 @@ export default {
 			txt = txt.replaceAll('}', '<span style="color: aqua">}</span>')
 			txt = txt.replaceAll('<pre', '<pre style="font-size: 1rem; margin: 0 !important;"')
 			return txt
+		},
+
+		takeScreenshotOfConsole() {
+			domtoimage.toJpeg(document.getElementById('super-console-body'))
+				.then(dataUrl => {
+					let link = document.createElement('a')
+					link.download = 'console.jpg'
+					link.href = dataUrl
+					link.click()
+				})
 		}
 	},
 }
