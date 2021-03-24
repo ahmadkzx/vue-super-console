@@ -2,7 +2,7 @@
   "name": "vue-super-console",
   "version": "0.1.0",
   "private": true,
-  "main": "dist/vue-super-console.common.js",
+  "main": "./dist/vue-super-console.common.js",
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build --target lib --name vue-super-console ./src/mainBuild.js"
