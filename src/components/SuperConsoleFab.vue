@@ -11,7 +11,7 @@
 import SuperConsole from './SuperConsole'
 
 export default {
-	name: 'SuperFab',
+	name: 'SuperConsoleFab',
 
 	components: {
 		SuperConsole

@@ -1,5 +1,12 @@
 @import "@/assets/sass/_base.scss";
 
+.super-console-container {
+	position: relative;
+	z-index: 999999999999999;
+	direction: ltr;
+	text-align: left;
+}
+
 .super-fab {
 	position: fixed;
 	top: 3rem;
