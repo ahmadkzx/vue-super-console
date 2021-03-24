@@ -59,6 +59,10 @@ export default {
 		logContentType: {
 			type: String,
 			required: true
+		},
+		logPureContent: {
+			type: String,
+			required: true
 		}
 	},
 
@@ -94,7 +98,7 @@ export default {
 		},
 
 		googleError() {
-			const searchQuery = `how to fix ${this.logContent}`.replaceAll(' ', '+')
+			const searchQuery = encodeURIComponent(`how to fix ${this.logPureContent}`)
 			if (process.browser) window.open(`https://google.com/search?q=${searchQuery}`, '_blank')
 		},
 

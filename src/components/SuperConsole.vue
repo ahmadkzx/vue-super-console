@@ -27,6 +27,7 @@
 						:logType="log.type"
 						@removeLog="removeLog"
 						:logContent="log.content"
+						:logPureContent="log.pureContent"
 						:logContentType="log.contentType"
 					/>
 				</div>
@@ -80,7 +81,7 @@ export default {
 			let filteredLogs = this.logsPayload
 
 			if (this.selectedErrorType) filteredLogs = filteredLogs.filter(log => log.type == this.selectedErrorType)
-			if (this.searchQuery) filteredLogs = filteredLogs.filter(log => log.content.indexOf(this.searchQuery) >= 0)
+			if (this.searchQuery) filteredLogs = filteredLogs.filter(log => log.pureContent.indexOf(this.searchQuery) >= 0)
 
 			return filteredLogs
 		}
@@ -104,10 +105,11 @@ export default {
 		},
 
 		addLog(type, args) {
-			const { logContent, logContentType } = this.getLogContentAndContentType(args)
+			const { logContent, logContentType, logPureContent } = this.getLogContentAndContentType(args)
 			const payload = {
 				type,
 				content: logContent,
+				pureContent:logPureContent,
 				contentType: logContentType,
 				id: this.logsPayload[this.logsPayload.length - 1]?.id + 1 || 1
 			}
@@ -143,6 +145,7 @@ export default {
 
 		getLogContentAndContentType(args) {
 			let newArgs = []
+			let pureArgs = []
 			let isStyled = false
 			let logContentType = ''
 			Array.prototype.map.call(args, arg => {
@@ -166,11 +169,13 @@ export default {
 				}
 
 				newArgs.push( this.highlightSyntax(arg) )
+				pureArgs.push(arg)
 
 			})
 			return {
 				logContentType,
-				logContent: newArgs.join(' ')
+				logContent: newArgs.join(' '),
+				logPureContent: pureArgs.join(' ')
 			}
 		},
 
