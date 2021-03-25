@@ -19,3 +19,5 @@ import VueSuperConsole from 'vue-super-console'
 ```html
 <vue-super-console></vue-super-console>
 ```
+
+**WARNING: FIRST CHECK THAT YOU ARE IN DEVELOPMENT MODE THEN RENDER VUE SUPER CONSOLE COMPONENT. ( USE V-IF )
