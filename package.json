@@ -1,6 +1,6 @@
 {
   "name": "vue-super-console",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "private": false,
   "main": "./dist/vue-super-console.common.js",
   "scripts": {
@@ -24,5 +24,13 @@
 		"src/*",
 		"*.json",
 		"*.sass"
-	]
+	],
+	"keywords": [
+    "vue",
+    "nuxt",
+    "console",
+		"js",
+		"javascript",
+		"debug"
+  ]
 }
