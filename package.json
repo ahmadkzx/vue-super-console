@@ -1,7 +1,7 @@
 {
   "name": "vue-super-console",
   "version": "1.0.0",
-  "private": true,
+  "private": false,
   "main": "./dist/vue-super-console.common.js",
   "scripts": {
     "serve": "vue-cli-service serve",
