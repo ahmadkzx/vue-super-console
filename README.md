@@ -3,7 +3,7 @@
 Beautiful floating console for Vue with features such as photos, copies and ...
 replace of the browser console.
 
-![alt Vue Super Console](https://github.com/ahmadkzx/vue-super-console/blob/master/src/assets/overview.png?raw=true)
+![Vue Super Console](.images/overview.png)
 
 1. Install the package:
 ```shell
