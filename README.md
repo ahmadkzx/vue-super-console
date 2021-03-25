@@ -2,8 +2,9 @@
 
 Beautiful floating console for Vue with features such as screenshot, copy log text and ...  
 replace of the browser console.
-
-![Vue Super Console](.images/overview.png)
+  
+![preview](https://user-images.githubusercontent.com/69081259/112501906-41ec6b80-8da7-11eb-8b09-b3ed15b6a752.png)
+  
 
 1. Install the package:
 ```shell
