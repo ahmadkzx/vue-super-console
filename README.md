@@ -1,6 +1,6 @@
 # Vue Super Console
 
-Beautiful floating console for Vue with features such as photos, copies and ...
+Beautiful floating console for Vue with features such as screenshot, copy log text and ...  
 replace of the browser console.
 
 ![Vue Super Console](.images/overview.png)
