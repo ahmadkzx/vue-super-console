@@ -1,6 +1,5 @@
 <template>
   <div id="app">
-		<img src="@/assets/test.jpg" style="position: absolute">
     <SuperConsoleFab />
   </div>
 </template>

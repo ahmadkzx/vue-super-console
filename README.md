@@ -1,19 +1,21 @@
-# super-console
+# Vue Super Console
 
-## Project setup
-```
-npm install
-```
+Beautiful floating console for Vue with features such as photos, copies and ...
+replace of the browser console.
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
+![alt Vue Super Console](https://github.com/ahmadkzx/vue-super-console/blob/dev/src/assets/overview.jpg?raw=true)
 
-### Compiles and minifies for production
-```
-npm run build
+1. Install the package:
+```shell
+npm install vue-super-console
 ```
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+2. Import component in App.vue or Layout:
+```javascript
+import VueSuperConsole from 'vue-super-console'
+```
+
+3. Put component in template
+```html
+<vue-super-console></vue-super-console>
+```
