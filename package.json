@@ -1,11 +1,16 @@
 {
   "name": "vue-super-console",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "private": false,
   "main": "./dist/vue-super-console.common.js",
+	"homepage": "https://github.com/ahmadkzx/vue-super-console#readme",
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build --target lib --name vue-super-console ./src/mainBuild.js"
+  },
+	"repository": {
+    "type": "git",
+    "url": "git+https://github.com/ahmadkzx/vue-super-console"
   },
   "dependencies": {
     "core-js": "^3.6.5",
